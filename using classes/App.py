@@ -8,6 +8,10 @@ class App(tk.Tk):
         self.geometry(f'{size[0]}x{size[1]}')
         self.minsize(size[0],size[1])
         
+        # theme
+        self.tk.call('source', 'using classes/Azure/azure.tcl')
+        self.tk.call('set_theme', 'light')
+        
         # widgets
         self.menu = Menu(self)
         self.main = Main(self)
@@ -40,12 +44,12 @@ class Menu(ttk.Frame):
         self.rowconfigure((0,1,2,3,4), weight=1, uniform='a')
         
         # place the widgets
-        menu_button1.grid(row=0, column=0, sticky='nsew', columnspan=2)
-        menu_button2.grid(row=0, column=2, sticky='nsew')
-        menu_button3.grid(row=1, column=0, columnspan=3, sticky='nsew')
+        menu_button1.grid(row=0, column=0, sticky='nsew', columnspan=2, padx=4, pady=4)
+        menu_button2.grid(row=0, column=2, sticky='nsew', padx=4, pady=4)
+        menu_button3.grid(row=1, column=0, columnspan=3, sticky='nsew', padx=4, pady=4)
 
-        menu_slider1.grid(row=2, column=0, rowspan=2, sticky='nsew', pady=20)
-        menu_slider2.grid(row=2, column=2, rowspan=2, sticky='nsew', pady=20)
+        menu_slider1.grid(row=2, column=0, rowspan=2, sticky='ns', pady=20)
+        menu_slider2.grid(row=2, column=2, rowspan=2, sticky='ns', pady=20)
 
         # toggle layout
         toggle_frame.grid(row=4, column=0, columnspan=3, sticky='nsew')
@@ -73,4 +77,4 @@ class Entry(ttk.Frame):
         button.pack(expand=True, fill='both', pady=10)
         
         self.pack(side='left', expand=True, fill='both', padx=20, pady=20)
-App('Class based app', (600,600))
+App('Theme based app', (600,600))
